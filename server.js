@@ -58,7 +58,9 @@ if (cluster.isMaster) {
                         if (err) {
                             console.error('Error al insertar datos:', err);
                         } else {
-                            console.log('Datos almacenados:', result);
+
+                            console.log('Datos almacenados:', result, process.pid);
+                            io.emit('process', process.pid); // Enviar el mensaje a todos los clientes conectados
                         }
                     });
                 });

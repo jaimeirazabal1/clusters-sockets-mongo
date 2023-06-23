@@ -22,8 +22,8 @@
       console.log('Desconectado del servidor Socket.IO');
     });
 
-    socket.on('message', (data) => {
-      console.log('Mensaje recibido:', data);
+    socket.on('process', (data) => {
+      console.log('process:', data);
     });
 
     function enviarMensajes() {
