@@ -1,0 +1,5 @@
+docker pull mongo
+docker run --name mongodb-server -p 27017:27017 -d mongo
+
+docker stop mongodb-server
+docker rm mongodb-server

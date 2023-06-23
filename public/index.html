@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script src="https://cdn.socket.io/4.3.2/socket.io.js"></script>
+  <script>
+    const socket = io('http://localhost:8080'); // Cambia la URL si el servidor se está ejecutando en un host diferente
+
+    socket.on('connect', () => {
+      console.log('Conectado al servidor Socket.IO');
+
+      // Envía un mensaje al servidor
+    //   socket.emit('message', { mensaje: "cosas que pasan cuando suceden" });
+    });
+
+    socket.on('disconnect', () => {
+      console.log('Desconectado del servidor Socket.IO');
+    });
+
+    socket.on('message', (data) => {
+      console.log('Mensaje recibido:', data);
+    });
+
+    function enviarMensajes() {
+      for (let i = 0; i < 1000; i++) {
+        socket.emit('message', { mensaje: `Mensaje ${i + 1}` });
+      }
+    }
+  </script>
+  <button onclick="enviarMensajes()">Enviar 100 mensajes</button>
+</body>
+</html>
